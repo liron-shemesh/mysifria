@@ -45,14 +45,14 @@ const Home: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5, borderColor: 'rgba(197, 160, 89, 0.2)' }}
-      className="p-6 rounded-3xl bg-[#161618] border border-white/[0.05] flex items-center gap-5 transition-all shadow-lg"
+      className="p-6 rounded-3xl bg-white dark:bg-[#161618] border border-black/5 dark:border-white/[0.05] flex items-center gap-5 transition-all shadow-md dark:shadow-lg"
     >
       <div className={`p-3.5 rounded-2xl bg-opacity-10 ${color}`}>
         <Icon className={color.replace('bg-', 'text-')} size={24} />
       </div>
       <div>
-        <p className="text-[11px] text-neutral-500 font-bold uppercase tracking-wider">{label}</p>
-        <p className="text-2xl font-bold text-white serif mt-0.5">{value}</p>
+        <p className="text-[11px] text-neutral-400 dark:text-neutral-500 font-bold uppercase tracking-wider">{label}</p>
+        <p className="text-2xl font-bold text-neutral-800 dark:text-white serif mt-0.5">{value}</p>
       </div>
     </motion.div>
   );
@@ -74,13 +74,13 @@ const Home: React.FC = () => {
           <motion.div 
             initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
             animate={{ scale: 1, opacity: 1, rotate: 0 }}
-            className="w-24 h-24 bg-gradient-to-br from-[#c5a059] to-[#8e6e3d] rounded-[2.5rem] flex items-center justify-center shadow-[0_20px_50px_rgba(197,160,89,0.3)] relative group cursor-default"
+            className="w-24 h-24 bg-gradient-to-br from-[#c5a059] to-[#8e6e3d] rounded-[2.5rem] flex items-center justify-center shadow-xl relative group cursor-default"
           >
             <LibraryIcon className="text-black" size={40} />
             <motion.div 
               animate={{ rotate: -360 }}
               transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-[-10px] border border-[#c5a059]/20 rounded-[3rem] opacity-50 group-hover:opacity-100 transition-opacity"
+              className="absolute inset-[-10px] border border-[#c5a059]/20 rounded-[3rem] opacity-50"
             />
           </motion.div>
 
@@ -92,7 +92,7 @@ const Home: React.FC = () => {
             <motion.h2 
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className="text-5xl md:text-7xl font-bold serif text-white tracking-tight leading-none"
+              className="text-5xl md:text-7xl font-bold serif text-neutral-900 dark:text-white tracking-tight leading-none"
             >
               ברוכים השבים ל<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c5a059] to-[#eaddca] italic">ספרייה</span>
             </motion.h2>
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="text-neutral-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed"
+              className="text-neutral-500 dark:text-neutral-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed"
             >
               מקום שבו סיפורים מתעוררים לחיים. כאן נשמרים הרגעים, הידע והמסעות שלך בין הדפים.
             </motion.p>
@@ -119,7 +119,7 @@ const Home: React.FC = () => {
 
       {readingNow.length > 0 && (
         <section className="space-y-8">
-          <div className="flex justify-between items-end border-b border-white/[0.05] pb-4">
+          <div className="flex justify-between items-end border-b border-black/5 dark:border-white/[0.05] pb-4">
             <h3 className="text-2xl font-bold serif text-[#c5a059] flex items-center gap-3">
               <BookOpen size={24} className="opacity-80" />
               קורא עכשיו
@@ -134,21 +134,21 @@ const Home: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
                   whileHover={{ scale: 1.01, borderColor: 'rgba(197, 160, 89, 0.3)' }}
-                  className="bg-[#161618] p-7 rounded-[2.5rem] border border-white/[0.05] flex flex-col sm:flex-row gap-8 transition-all cursor-pointer group relative overflow-hidden shadow-2xl"
+                  className="bg-white dark:bg-[#161618] p-7 rounded-[2.5rem] border border-black/5 dark:border-white/[0.05] flex flex-col sm:flex-row gap-8 transition-all cursor-pointer group relative overflow-hidden shadow-lg dark:shadow-2xl"
                   onClick={() => navigate(`/book/${book.id}`)}
                 >
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#c5a059]/10 to-transparent" />
                   
-                  <div className="w-full sm:w-36 aspect-[2/3] shadow-[0_15px_40px_rgba(0,0,0,0.6)] rounded-xl overflow-hidden flex-shrink-0 group-hover:scale-[1.03] transition-transform duration-700">
+                  <div className="w-full sm:w-36 aspect-[2/3] shadow-xl rounded-xl overflow-hidden flex-shrink-0 group-hover:scale-[1.03] transition-transform duration-700">
                     <img src={book.thumbnail} className="w-full h-full object-cover" alt={book.title} />
                   </div>
                   
                   <div className="flex-1 flex flex-col justify-between py-2">
                     <div>
-                      <h4 className="text-2xl font-bold serif leading-tight text-white group-hover:text-[#c5a059] transition-colors">{book.title}</h4>
+                      <h4 className="text-2xl font-bold serif leading-tight text-neutral-900 dark:text-white group-hover:text-[#c5a059] transition-colors">{book.title}</h4>
                       <button 
                         onClick={(e) => handleAuthorClick(e, book.authors[0])}
-                        className="text-[13px] text-neutral-500 mt-2 font-medium hover:text-[#c5a059] transition-colors"
+                        className="text-[13px] text-neutral-400 dark:text-neutral-500 mt-2 font-medium hover:text-[#c5a059] transition-colors"
                       >
                         מאת: {book.authors.join(', ')}
                       </button>
@@ -158,16 +158,16 @@ const Home: React.FC = () => {
                       <div className="flex justify-between items-end">
                         <div className="flex flex-col">
                           <span className="text-4xl font-bold text-[#c5a059] serif leading-none tracking-tighter">{progress}%</span>
-                          <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 font-black mt-2">התקדמות קריאה</span>
+                          <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500 font-black mt-2">התקדמות קריאה</span>
                         </div>
                         <div className="text-right">
-                          <span className="text-[11px] text-neutral-400 block font-bold uppercase tracking-wider">עמוד {book.currentPage} / {book.pageCount}</span>
-                          <span className="text-[10px] text-neutral-600 block uppercase font-bold mt-1">נותרו {book.pageCount - book.currentPage} עמ'</span>
+                          <span className="text-[11px] text-neutral-500 dark:text-neutral-400 block font-bold uppercase tracking-wider">עמוד {book.currentPage} / {book.pageCount}</span>
+                          <span className="text-[10px] text-neutral-400 dark:text-neutral-600 block uppercase font-bold mt-1">נותרו {book.pageCount - book.currentPage} עמ'</span>
                         </div>
                       </div>
 
                       <div className="relative pt-2">
-                        <div className="h-2 bg-black/40 rounded-full overflow-hidden border border-white/[0.03]">
+                        <div className="h-2 bg-black/5 dark:bg-black/40 rounded-full overflow-hidden border border-black/5 dark:border-white/[0.03]">
                           <motion.div 
                             initial={{ width: 0 }}
                             animate={{ width: `${progress}%` }}
@@ -184,7 +184,7 @@ const Home: React.FC = () => {
                       </div>
 
                       <div className="flex justify-end">
-                        <button className="flex items-center gap-2 text-[10px] font-black text-[#c5a059] uppercase tracking-[0.2em] hover:text-white transition-all group/btn">
+                        <button className="flex items-center gap-2 text-[10px] font-black text-[#c5a059] uppercase tracking-[0.2em] hover:text-neutral-800 dark:hover:text-white transition-all group/btn">
                           המשך לקרוא <ArrowLeft size={14} className="group-hover/btn:-translate-x-1.5 transition-transform" />
                         </button>
                       </div>
@@ -199,12 +199,12 @@ const Home: React.FC = () => {
 
       {recommendations.length > 0 && (
         <section className="space-y-10">
-          <div className="flex justify-between items-end border-b border-white/[0.05] pb-4">
+          <div className="flex justify-between items-end border-b border-black/5 dark:border-white/[0.05] pb-4">
             <h3 className="text-2xl font-bold serif text-[#c5a059] flex items-center gap-3">
               <Sparkles size={24} className="opacity-80" />
               במיוחד בשבילך
             </h3>
-            <p className="text-[10px] text-neutral-500 uppercase tracking-widest font-black">מבוסס על הטעם שלך</p>
+            <p className="text-[10px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-black">מבוסס על הטעם שלך</p>
           </div>
           <div className="relative pt-6">
             {isRecLoading ? (
@@ -226,9 +226,9 @@ const Home: React.FC = () => {
       )}
 
       <section className="space-y-10">
-        <div className="flex justify-between items-end border-b border-white/[0.05] pb-4">
+        <div className="flex justify-between items-end border-b border-black/5 dark:border-white/[0.05] pb-4">
           <h3 className="text-2xl font-bold serif text-[#c5a059]">ספרים על המדף</h3>
-          <button onClick={() => navigate('/shelves')} className="text-xs font-black uppercase tracking-widest text-neutral-500 hover:text-[#c5a059] transition-all flex items-center gap-2">
+          <button onClick={() => navigate('/shelves')} className="text-xs font-black uppercase tracking-widest text-neutral-400 dark:text-neutral-500 hover:text-[#c5a059] transition-all flex items-center gap-2">
             צפה בכל המדפים <ChevronLeft size={14} />
           </button>
         </div>
@@ -242,7 +242,7 @@ const Home: React.FC = () => {
                 </div>
               ))
             ) : (
-              <div className="col-span-full py-20 text-center text-neutral-600 italic border border-white/[0.03] bg-white/[0.01] rounded-[2.5rem]">
+              <div className="col-span-full py-20 text-center text-neutral-500 italic border border-black/5 dark:border-white/[0.03] bg-black/[0.01] dark:bg-white/[0.01] rounded-[2.5rem]">
                 <p className="text-lg serif opacity-50">עדיין אין ספרים במדף.</p>
                 <button onClick={() => navigate('/search')} className="mt-4 text-[#c5a059] font-bold hover:underline">חפש ספרים כדי להתחיל</button>
               </div>

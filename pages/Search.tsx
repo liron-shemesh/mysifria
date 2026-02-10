@@ -39,16 +39,16 @@ const Search: React.FC = () => {
   return (
     <div className="space-y-16 pb-20">
       <header className="max-w-3xl mx-auto text-center space-y-8">
-        <h2 className="text-4xl md:text-5xl font-bold serif text-white px-4 tracking-tight leading-tight">מצא את הספר הבא שלך <span className="text-[#c5a059] block text-2xl mt-2 font-normal italic">בספרייה העולמית</span></h2>
+        <h2 className="text-4xl md:text-5xl font-bold serif text-neutral-900 dark:text-white px-4 tracking-tight leading-tight">מצא את הספר הבא שלך <span className="text-[#c5a059] block text-2xl mt-2 font-normal italic">בספרייה העולמית</span></h2>
         <form onSubmit={handleSearch} className="relative group px-4">
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="חפש לפי שם ספר, מחבר או נושא..."
-            className="w-full bg-[#161618] border border-white/[0.05] rounded-[2rem] py-5 sm:py-6 px-14 sm:px-16 text-white focus:outline-none focus:border-[#c5a059]/40 transition-all text-base sm:text-xl shadow-2xl font-light tracking-wide placeholder:text-neutral-600"
+            className="w-full bg-white dark:bg-[#161618] border border-black/10 dark:border-white/[0.05] rounded-[2rem] py-5 sm:py-6 px-14 sm:px-16 text-neutral-800 dark:text-white focus:outline-none focus:border-[#c5a059]/40 transition-all text-base sm:text-xl shadow-xl dark:shadow-2xl font-light tracking-wide placeholder:text-neutral-400 dark:placeholder:text-neutral-600"
           />
-          <SearchIcon className="absolute right-10 top-1/2 -translate-y-1/2 text-neutral-600 group-focus-within:text-[#c5a059] transition-all duration-500" size={24} />
+          <SearchIcon className="absolute right-10 top-1/2 -translate-y-1/2 text-neutral-400 dark:text-neutral-600 group-focus-within:text-[#c5a059] transition-all duration-500" size={24} />
           <button 
             type="submit"
             className="absolute left-8 top-1/2 -translate-y-1/2 bg-[#c5a059] text-black px-6 sm:px-8 py-2.5 sm:py-3 rounded-2xl font-black uppercase tracking-widest text-[10px] sm:text-xs hover:bg-[#eaddca] transition-all shadow-xl active:scale-95"
@@ -91,9 +91,9 @@ const Search: React.FC = () => {
         )}
 
         {!isLoading && results.length === 0 && query && (
-          <div className="text-center py-32 border border-white/[0.03] bg-white/[0.01] rounded-[3rem]">
-            <p className="text-neutral-500 text-lg serif px-4 opacity-60">לא מצאנו תוצאות עבור "{query}"</p>
-            <p className="text-neutral-700 text-sm mt-2 uppercase tracking-widest">נסה לחפש מונח אחר או בדוק שגיאות כתיב</p>
+          <div className="text-center py-32 border border-black/5 dark:border-white/[0.03] bg-black/[0.01] dark:bg-white/[0.01] rounded-[3rem]">
+            <p className="text-neutral-400 dark:text-neutral-500 text-lg serif px-4 opacity-60">לא מצאנו תוצאות עבור "{query}"</p>
+            <p className="text-neutral-500 dark:text-neutral-700 text-sm mt-2 uppercase tracking-widest">נסה לחפש מונח אחר או בדוק שגיאות כתיב</p>
           </div>
         )}
       </div>
